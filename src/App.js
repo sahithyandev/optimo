@@ -15,12 +15,17 @@ import {
   FiShield,
   FiShoppingCart,
   FiPhoneCall,
-  FiBriefcase
+  FiBriefcase,
+  FiFacebook,
+  FiTwitter,
+  FiInstagram,
+  FiLinkedin,
+  FiMail
 } from "react-icons/fi";
 
 import tw from "twin.macro";
 
-import { FeatureCard, Heading, PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard, WAWCard } from "./components/";
+import { FeatureCard, FooterHead, FooterText, Heading, FooterIconContainer, PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard, WAWCard } from "./components/";
 
 const Container = ({ children, className }) => {
   return <div className={`container ${className}`} tw="mx-auto p-4">{children}</div>
@@ -38,7 +43,7 @@ const LinkButton = ({ children, className, to }) => {
       to.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
-  return <button onClick={scrollTo} className={className} tw="my-1 px-4 py-3">{children}</button>
+  return <button onClick={scrollTo} className={className} tw="">{children}</button>
 }
 
 export default function App() {
@@ -318,41 +323,85 @@ export default function App() {
       </div>
       <div ref={contactRef} tw="bg-gradient-to-r from-white via-white to-white rounded-lg pb-8 pt-16">
         <Container>
-          <div tw="grid grid-cols-2 md:grid-cols-4 mt-8 gap-8">
-            <div tw="col-span-2">
-              <img src="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/logo-wide.png?alt=media&token=553c3ab7-8841-49ae-8477-ba1c907d5c40" alt="optimo-logo-wide" />
-              <p tw="my-1 px-4 py-3">info@optimoinvestments.com</p>
+          <div tw="grid grid-cols-2 md:grid-cols-6 mt-8 gap-8">
+            <div tw="flex flex-col col-span-2">
+              <img src="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/logo-wide.png?alt=media&token=553c3ab7-8841-49ae-8477-ba1c907d5c40" alt="optimo-logo-wide" width="80%" />
+
+              <div tw="flex items-center mb-4 ml-4">
+                <FooterIconContainer Icon={FiMail} />
+                <span tw="my-1 px-4 py-3 opacity-75">info@optimoinvestments.com</span>
+              </div>
+
+              <div tw="flex gap-4 ml-4">
+                <a href="#"><FooterIconContainer Icon={FiFacebook} /></a>
+                <a href="#"><FooterIconContainer Icon={FiTwitter} /></a>
+                <a href="#"><FooterIconContainer Icon={FiInstagram} /></a>
+                <a href="#"><FooterIconContainer Icon={FiLinkedin} /></a>
+              </div>
+            </div>
+            <div tw="flex flex-col items-start">
+              <FooterHead>
+                Pages
+              </FooterHead>
+
+              <LinkButton to={aboutRef}>
+                <FooterText>About Us</FooterText>
+              </LinkButton>
+              <LinkButton to={plansRef}>
+                <FooterText>Plans</FooterText>
+              </LinkButton>
+              <LinkButton to={featuresRef}>
+                <FooterText>Features</FooterText>
+              </LinkButton>
+              <LinkButton to={testimoRef}>
+                <FooterText>Testimonials</FooterText>
+              </LinkButton>
+              <LinkButton to={paymentsRef}>
+                <FooterText>Payment Methods</FooterText>
+              </LinkButton>
+              <LinkButton to={contactRef}>
+                <FooterText>Contact</FooterText>
+              </LinkButton>
+            </div>
+
+            <div>
+              <FooterHead>
+                Included Documents
+              </FooterHead>
+
+              <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Terms.pdf?alt=media&token=26c49421-1798-4ec4-989e-eb8b88e4ce6f">
+                <FooterText>Terms and Condtions</FooterText>
+              </a>
+              <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Privacy.pdf?alt=media&token=abc5bd77-bba9-41e9-8f58-6ba57eac5ca2">
+                <FooterText>Privacy Policy</FooterText>
+              </a>
             </div>
             <div tw="">
-              <h6>UK Branch</h6>
-              <p tw="">+44 74 183 57637</p>
-              <p tw="">International House,</p>
-              <p tw="">12 Constance Street</p>
-              <p tw="">London</p>
-              <p tw="">E16 2DQ</p>
+              <FooterHead>
+                UK Branch
+              </FooterHead>
+              <FooterText>+44 74 183 57637</FooterText>
+              <FooterText>International House</FooterText>
+              <FooterText>12 Constance Street</FooterText>
+              <FooterText>London</FooterText>
+              <FooterText>E16 2DQ</FooterText>
             </div>
             <div tw="">
-              <h6>USA Branch</h6>
-              <p tw="">312 W.</p>
-              <p tw="">2nd St #1232 Casper</p>
-              <p tw="">WY 82601</p>
+              <FooterHead>
+                USA Branch
+              </FooterHead>
+              <FooterText>312 W.</FooterText>
+              <FooterText>2nd St #1232 Casper</FooterText>
+              <FooterText>WY 82601</FooterText>
             </div>
 
           </div>
           <div tw="mx-auto text-center">
-            <LinkButton to={aboutRef}>About Us</LinkButton>
-            <LinkButton to={plansRef}>Plans</LinkButton>
-            <LinkButton to={featuresRef}>Features</LinkButton>
-            <LinkButton to={testimoRef}>Testimonials</LinkButton>
-            <LinkButton to={paymentsRef}>Payment Methods</LinkButton>
-            <LinkButton to={contactRef}>Contact</LinkButton>
           </div>
         </Container>
-        <div tw="text-center">&copy; All rights reserved.
-          <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Terms.pdf?alt=media&token=26c49421-1798-4ec4-989e-eb8b88e4ce6f"><p>Terms and Condtions</p></a>
-          <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Privacy.pdf?alt=media&token=abc5bd77-bba9-41e9-8f58-6ba57eac5ca2"><p>Privacy Policy</p></a>
+        <div tw="text-center font-medium">&copy; All rights reserved.
         </div>
       </div>
-    </div>
+    </div >
   );
 }

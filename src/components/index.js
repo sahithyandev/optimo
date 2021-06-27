@@ -88,3 +88,17 @@ export const PaymentMethodCard = ({ imageSrc, paymentMethodName }) => {
 			src={imageSrc} alt={paymentMethodName} />
 	</div>
 }
+
+export const FooterHead = tw.h6`
+	font-bold mb-2
+`;
+
+export const FooterText = tw.span`
+	inline-block font-medium my-2 opacity-50 
+`;
+
+export const FooterIconContainer = ({ Icon }) => {
+	return <div tw="bg-teal-100 rounded inline-block p-2">
+		<Icon color="#1f34a0" size="16" />
+	</div>
+}
