@@ -23,9 +23,13 @@ import {
   FiMail
 } from "react-icons/fi";
 
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 
-import { FeatureCard, FooterHead, FooterText, Heading, FooterIconContainer, PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard, WAWCard } from "./components/";
+import {
+  FeatureCard, FooterHead, FooterText, Heading, FooterIconContainer,
+  PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard,
+  WAWCard
+} from "./components/";
 
 const Container = ({ children, className }) => {
   return <div className={`container ${className}`} tw="mx-auto p-4">{children}</div>
@@ -33,8 +37,11 @@ const Container = ({ children, className }) => {
 
 const FlexBetween = tw.div`flex justify-evenly`;
 
-const ButtonPrimary = tw.button`
-  m-1 px-4 py-3 bg-blue-900 text-white rounded-md
+const ButtonBaseStyle = tw`m-1 px-6 py-2 font-medium`;
+
+const ButtonPrimary = styled.button`
+  ${ButtonBaseStyle}
+  ${tw`bg-blue-900 text-white rounded-md`}
 `;
 
 const LinkButton = ({ children, className, to }) => {
@@ -45,6 +52,11 @@ const LinkButton = ({ children, className, to }) => {
   }
   return <button onClick={scrollTo} className={className} tw="">{children}</button>
 }
+
+const SecondaryButton = styled(LinkButton)`
+  ${ButtonBaseStyle}
+  ${tw`border-primary-500 border-4 rounded-md text-blue-900`}
+`;
 
 export default function App() {
   const history = window.history;
@@ -62,17 +74,18 @@ export default function App() {
           <div tw="text-xl w-64">
             <img src="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/logo-wide.png?alt=media&token=553c3ab7-8841-49ae-8477-ba1c907d5c40" alt="optimo-logo-wide" />
           </div>
-          <FlexBetween>
+          <FlexBetween tw="gap-6">
             <LinkButton to={aboutRef}>About Us</LinkButton>
             <LinkButton to={plansRef}>Plans</LinkButton>
             <LinkButton to={featuresRef}>Features</LinkButton>
             <LinkButton to={testimoRef}>Testimonials</LinkButton>
             <LinkButton to={paymentsRef}>Payment Methods</LinkButton>
             <LinkButton to={contactRef}>Contact</LinkButton>
-            <ButtonPrimary className="" onClick={() => history.push('/login')}>Sign up</ButtonPrimary>
-            <ButtonPrimary className="" onClick={() => history.push('/login')}>Login</ButtonPrimary>
+            <div>
+              <ButtonPrimary className="" onClick={() => history.push('/login')}>Sign up</ButtonPrimary>
+              <ButtonPrimary className="" onClick={() => history.push('/login')}>Login</ButtonPrimary>
+            </div>
           </FlexBetween>
-
         </div>
       </Container>
       <Container tw="py-8 block md:hidden">
@@ -82,21 +95,23 @@ export default function App() {
           </div>
         </div>
       </Container>
-      <div tw="bg-gradient-to-l from-white rounded-lg pb-32 pt-16 py-32">
+      <div tw="bg-gradient-to-l from-white rounded-lg">
         <Container tw="p-4">
           <div tw="grid grid-cols-1 lg:grid-cols-2">
             <div tw="py-32 xl:py-64">
-              <p tw="text-blue-900 text-lg">Often Have Small</p>
-              <h2 tw="font-bold text-4xl">Invest Your Money For Future</h2>
-              <p tw="text-justify text-lg text-gray-600">“While saving involves putting some of today's money away for tomorrow, investment includes bringing your money to invest in order to appropriately generate a greater return over time. ”</p>
+              <SubHeading>Often Have Small</SubHeading>
+              <Heading tw="mb-4">Invest Your Money For Future</Heading>
+              <p tw="text-justify text-lg text-gray-600 font-medium">“While saving involves putting some of today's money away for tomorrow, investment includes bringing your money to invest in order to appropriately generate a greater return over time. ”</p>
               <div tw="flex mt-4">
                 <ButtonPrimary className="animate-pulse" onClick={() => history.push('/app')}>Start Now</ButtonPrimary>
-                <LinkButton to={plansRef}>View Plans</LinkButton>
+                <SecondaryButton>
+                  View Plans
+                </SecondaryButton>
               </div>
             </div>
-            <div tw="mt-4 ">
-              <img alt="" src="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Group%201041.png?alt=media&token=9a8c41bb-a191-4d30-b7e6-950ae9f7db49" />
-            </div>
+            <img alt="" src="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Group%201041.png?alt=media&token=9a8c41bb-a191-4d30-b7e6-950ae9f7db49" />
+            {/* <div tw="mt-4 ">
+            </div> */}
           </div>
         </Container>
       </div>
@@ -105,7 +120,7 @@ export default function App() {
           <div tw="md:text-center">
             <SubHeading>Who are we</SubHeading>
             <Heading>Welcome to Optimo Investments</Heading>
-            <p tw="mt-3 text-justify md:text-center text-lg text-gray-600 md:px-32">At Optimo Investment, we believe in assisting people to achieve their long-term investment ambitions. We are dedicated to helping you to achieve your trading and investor strategy, if you are new to trading or a senior expert, with a comprehensive range of strong trading technology, online brokerage services,trading education and we are always attempting to change the traditional smart trading business is to make currency institutions accessible to all, anywhere.</p>
+            <p tw="mt-3 text-justify md:text-center text-lg text-gray-600 md:px-32 font-medium">At Optimo Investment, we believe in assisting people to achieve their long-term investment ambitions. We are dedicated to helping you to achieve your trading and investor strategy, if you are new to trading or a senior expert, with a comprehensive range of strong trading technology, online brokerage services,trading education and we are always attempting to change the traditional smart trading business is to make currency institutions accessible to all, anywhere.</p>
           </div>
           <div tw="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 mt-16 gap-4 w-8/12 mx-auto">
             <WAWCard
@@ -166,7 +181,7 @@ export default function App() {
           <div tw="text-center">
             <SubHeading>Services</SubHeading>
             <Heading>Our Features</Heading>
-            <p tw="text-justify md:text-center text-lg text-gray-600 md:px-32">At Optimo Investment, we believe in assisting people to achieve their long-term investment ambitions. We are dedicated to helping you to achieve your trading and investor strategy, if you are new to trading or a senior expert, with a comprehensive range of strong trading technology, online brokerage services, and trading education.
+            <p tw="text-justify md:text-center text-lg text-gray-600 md:px-32 font-medium">At Optimo Investment, we believe in assisting people to achieve their long-term investment ambitions. We are dedicated to helping you to achieve your trading and investor strategy, if you are new to trading or a senior expert, with a comprehensive range of strong trading technology, online brokerage services, and trading education.
               Inhere we are providing opportunity to join our future investment plan</p>
 
           </div>

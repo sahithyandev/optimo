@@ -27,7 +27,7 @@ export const WAWCard = ({
 			<Icon size="64" color="white" />
 		</div>
 		<h3 tw="text-xl font-bold mt-8">{title}</h3>
-		<p tw="text-lg text-gray-600">{description}</p>
+		<p tw="text-lg text-gray-600 font-medium">{description}</p>
 	</div>
 }
 
@@ -51,7 +51,7 @@ export const FeatureCard = ({
 		<h3 tw="text-xl font-bold mt-8">
 			{feature}
 		</h3>
-		<p tw="text-lg text-gray-600 mt-2">
+		<p tw="text-lg text-gray-600 mt-2 font-medium">
 			{description}
 		</p>
 	</div>
