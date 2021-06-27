@@ -1,5 +1,30 @@
 import React from "react";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
+
+export const Container = ({ children, className }) => {
+	return <div className={`container ${className}`} tw="mx-auto py-4">{children}</div>
+}
+
+const ButtonBaseStyle = tw`m-1 px-6 py-2 font-medium`;
+
+export const ButtonPrimary = styled.button`
+  ${ButtonBaseStyle}
+  ${tw`bg-blue-900 text-white rounded-md`}
+`;
+
+export const LinkButton = ({ children, className, to }) => {
+	const scrollTo = () => {
+		if (to) {
+			to.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		}
+	}
+	return <button onClick={scrollTo} className={className} tw="">{children}</button>
+}
+
+export const SecondaryButton = styled(LinkButton)`
+  ${ButtonBaseStyle}
+  ${tw`border-primary-500 border-4 rounded-md text-blue-900`}
+`;
 
 export const Heading = tw.h2`
 	font-bold text-4xl font-heading mb-16

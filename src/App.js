@@ -28,35 +28,16 @@ import tw, { styled } from "twin.macro";
 import {
   FeatureCard, FooterHead, FooterText, Heading, FooterIconContainer,
   PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard,
-  WAWCard
+  WAWCard,
+  Container,
+  ButtonPrimary,
+  LinkButton,
+  SecondaryButton
 } from "./components/";
 
-const Container = ({ children, className }) => {
-  return <div className={`container ${className}`} tw="mx-auto p-4">{children}</div>
-}
+import { PlansSection } from './sections';
 
 const FlexBetween = tw.div`flex justify-evenly`;
-
-const ButtonBaseStyle = tw`m-1 px-6 py-2 font-medium`;
-
-const ButtonPrimary = styled.button`
-  ${ButtonBaseStyle}
-  ${tw`bg-blue-900 text-white rounded-md`}
-`;
-
-const LinkButton = ({ children, className, to }) => {
-  const scrollTo = () => {
-    if (to) {
-      to.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }
-  return <button onClick={scrollTo} className={className} tw="">{children}</button>
-}
-
-const SecondaryButton = styled(LinkButton)`
-  ${ButtonBaseStyle}
-  ${tw`border-primary-500 border-4 rounded-md text-blue-900`}
-`;
 
 export default function App() {
   const history = window.history;
@@ -115,14 +96,14 @@ export default function App() {
           </div>
         </Container>
       </div>
-      <div tw="bg-gradient-to-l from-white rounded-lg py-48" ref={aboutRef}>
+      <div tw="bg-gradient-to-l from-white rounded-lg py-16 md:text-center" ref={aboutRef}>
         <Container >
-          <div tw="md:text-center">
+          <div>
             <SubHeading>Who are we</SubHeading>
-            <Heading>Welcome to Optimo Investments</Heading>
+            <Heading tw="mb-4">Welcome to Optimo Investments</Heading>
             <p tw="mt-3 text-justify md:text-center text-lg text-gray-600 md:px-32 font-medium">At Optimo Investment, we believe in assisting people to achieve their long-term investment ambitions. We are dedicated to helping you to achieve your trading and investor strategy, if you are new to trading or a senior expert, with a comprehensive range of strong trading technology, online brokerage services,trading education and we are always attempting to change the traditional smart trading business is to make currency institutions accessible to all, anywhere.</p>
           </div>
-          <div tw="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 mt-16 gap-4 w-8/12 mx-auto">
+          <div tw="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 my-16 gap-4 w-10/12 mx-auto">
             <WAWCard
               title="Traders"
               description="Providing best customer service is our primary value and always keeping touch with them."
@@ -147,36 +128,17 @@ export default function App() {
               Icon={FiClock}
               bgColor="green"
             />
-
           </div>
+          <ButtonPrimary>
+            Get More
+          </ButtonPrimary>
         </Container>
       </div>
-      <div ref={plansRef} tw="text-white rounded-lg py-32 bg-blue-900 hover:bg-gradient-to-l hover:from-blue-800">
-        <Container >
-          <div tw="text-center">
-            <p tw="text-lg">Out Plans</p>
-            <h1 tw="font-bold text-4xl">Our Investment Plans</h1>
-          </div>
+      {/* bg-blue-900 hover:bg-gradient-to-l hover:from-blue-800 */}
 
-          <div tw="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 mt-16 gap-4">
-            {/* {error && ''}
-          {loading && ''}
-          {value && <div className="grid md:grid-cols-3 grid-cols-1">
-            {value.docs.map((doc) => (
-              <div className="rounded-lg shadow-lg bg-white text-gray-600 md:w-64 w-max">
-                <p className="text-blue-900 font-bold m-8">{doc.data()['name']}</p>
-                <p className="border-b border-gray-200 py-2 px-8">{doc.data()['min_invest']} Minimum Investment</p>
-                <p className="border-b border-gray-200 py-2 px-8">{doc.data()['duration']} Months</p>
-                <p className="border-b border-gray-200 py-2 px-8">{doc.data()['interest']}% Interest</p>
-                <p className="border-gray-200 py-2 px-8">{doc.data()['ref_bonus']}% Refferal Bonus</p>
-                <ButtonPrimary onClick={() => history.push('/app')} className="m-4">Invest Now</ButtonPrimary>
-              </div>
-            ))}
-          </div>} */}
-          </div>
-        </Container>
-      </div>
-      <div ref={featuresRef} tw="bg-gradient-to-r from-white via-white to-white rounded-lg py-32">
+      <PlansSection ref={plansRef} />
+
+      <div ref={featuresRef} tw="bg-gradient-to-r from-white via-white to-white rounded-lg py-16">
         <Container>
           <div tw="text-center">
             <SubHeading>Services</SubHeading>
@@ -225,7 +187,7 @@ export default function App() {
           </div>
         </Container>
       </div>
-      <div ref={paymentsRef} tw="bg-gradient-to-r from-white via-white to-white rounded-lg py-32">
+      <div ref={paymentsRef} tw="bg-gradient-to-r from-white via-white to-white rounded-lg py-16">
         <Container>
           <div tw="text-center">
             <SubHeading>Statistics</SubHeading>
@@ -253,7 +215,7 @@ export default function App() {
                 <ButtonPrimary tw="transition duration-200 animate-pulse border border-white hover:bg-white hover:text-blue-900 hover:shadow-lg" onClick={() => history.push('/app')}>Start your joruney today!</ButtonPrimary>
               </div>
             </div>
-            <div tw="overflow-y-scroll max-w-lg ml-auto">
+            <div tw="overflow-y-scroll max-w-lg ml-auto" className="no-scroll-bar">
               <TestimonialCard
                 clientImgSrc="https://api.multiavatar.com/name.png"
                 clientName="Liberty Berge"
@@ -379,17 +341,21 @@ export default function App() {
               </LinkButton>
             </div>
 
-            <div>
+            <div tw="flex flex-col">
               <FooterHead>
                 Included Documents
               </FooterHead>
 
-              <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Terms.pdf?alt=media&token=26c49421-1798-4ec4-989e-eb8b88e4ce6f">
-                <FooterText>Terms and Condtions</FooterText>
-              </a>
-              <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Privacy.pdf?alt=media&token=abc5bd77-bba9-41e9-8f58-6ba57eac5ca2">
-                <FooterText>Privacy Policy</FooterText>
-              </a>
+              <FooterText>
+                <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Terms.pdf?alt=media&token=26c49421-1798-4ec4-989e-eb8b88e4ce6f">
+                  Terms and Condtions
+                </a>
+              </FooterText>
+              <FooterText>
+                <a href="https://firebasestorage.googleapis.com/v0/b/mf-optimo.appspot.com/o/Optimo%20Privacy.pdf?alt=media&token=abc5bd77-bba9-41e9-8f58-6ba57eac5ca2">
+                  Privacy Policy
+                </a>
+              </FooterText>
             </div>
             <div tw="">
               <FooterHead>
