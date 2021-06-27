@@ -9,6 +9,28 @@ export const SubHeading = tw.h4`
 	font-medium text-blue-500 font-normal
 `;
 
+export const WAWCard = ({
+	Icon,
+	title,
+	description,
+	bgColor
+}) => {
+	const colors = {
+		"yellow": tw`bg-yellow-700`,
+		"blue": tw`bg-blue-700`,
+		"red": tw`bg-red-700`,
+		"green": tw`bg-green-700`,
+	}
+
+	return <div tw="rounded-lg p-8 text-center hover:shadow-lg bg-white">
+		<div tw="mx-auto animate-pulse rounded-lg shadow-xl w-32 h-32 flex p-8" css={colors[bgColor]}>
+			<Icon size="64" color="white" />
+		</div>
+		<h3 tw="text-xl font-bold mt-8">{title}</h3>
+		<p tw="text-lg text-gray-600">{description}</p>
+	</div>
+}
+
 export const FeatureCard = ({
 	bgColor,
 	Icon,
@@ -22,7 +44,7 @@ export const FeatureCard = ({
 		"red": tw`bg-red-600`
 	}
 
-	return <div tw="rounded-lg p-8 bg-white shadow-lg hover:shadow-md max-w-sm">
+	return <div tw="rounded-lg p-8 bg-white shadow-lg hover:shadow-md">
 		<div tw="rounded-lg shadow-xl w-16 h-16 flex p-4 animate-pulse" css={colors[bgColor]}>
 			<Icon size="32" color="white" />
 		</div>

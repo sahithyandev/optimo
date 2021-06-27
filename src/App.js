@@ -20,7 +20,7 @@ import {
 
 import tw from "twin.macro";
 
-import { FeatureCard, Heading, PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard } from "./components/";
+import { FeatureCard, Heading, PaymentMethodCard, PaymentMethodCardContainer, SubHeading, TestimonialCard, WAWCard } from "./components/";
 
 const Container = ({ children, className }) => {
   return <div className={`container ${className}`} tw="mx-auto p-4">{children}</div>
@@ -102,35 +102,32 @@ export default function App() {
             <Heading>Welcome to Optimo Investments</Heading>
             <p tw="mt-3 text-justify md:text-center text-lg text-gray-600 md:px-32">At Optimo Investment, we believe in assisting people to achieve their long-term investment ambitions. We are dedicated to helping you to achieve your trading and investor strategy, if you are new to trading or a senior expert, with a comprehensive range of strong trading technology, online brokerage services,trading education and we are always attempting to change the traditional smart trading business is to make currency institutions accessible to all, anywhere.</p>
           </div>
-          <div tw="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 mt-16 gap-4">
-            <div tw="rounded-lg p-8 text-center hover:shadow-lg bg-white">
-              <div tw="mx-auto animate-pulse rounded-lg shadow-xl w-32 h-32 flex p-8 bg-yellow-700">
-                <FiUsers size="64" color="white" />
-              </div>
-              <h3 tw="text-xl font-bold mt-8">Traders</h3>
-              <p tw="text-lg text-gray-600">Providing best customer service is our primary value and always keeping touch with them.</p>
-            </div>
-            <div tw="rounded-lg p-8 text-center hover:shadow-lg bg-white">
-              <div tw="mx-auto animate-pulse rounded-lg shadow-xl w-32 h-32 flex p-8 bg-blue-700">
-                <FiShield size="64" color="white" />
-              </div>
-              <h3 tw="text-xl font-bold mt-8">Reliability</h3>
-              <p tw="text-lg text-gray-600">Since being a trustworthy merchant in digital flat form, We go above and beyond to meet the demands of our clientele.</p>
-            </div>
-            <div tw="rounded-lg p-8 text-center hover:shadow-lg bg-white">
-              <div tw="mx-auto animate-pulse rounded-lg shadow-xl w-32 h-32 flex p-8 bg-red-600">
-                <FiSmartphone size="64" color="white" />
-              </div>
-              <h3 tw="text-xl font-bold mt-8">Simplicity</h3>
-              <p tw="text-lg text-gray-600">With our simple trading platform, anyone can become a trader. Optimo Investment is accessible on all relevant platforms, including the following: Web, Windows, MacOS, iPhone, iPad and Android.</p>
-            </div>
-            <div tw="rounded-lg p-8 text-center hover:shadow-lg bg-white">
-              <div tw="mx-auto animate-pulse rounded-lg shadow-xl w-32 h-32 flex p-8 bg-green-600">
-                <FiClock size="64" color="white" />
-              </div>
-              <h3 tw="text-xl font-bold mt-8">Speed</h3>
-              <p tw="text-lg text-gray-600">We provide fastest trading using cutting-edge technologies. No delays in order executions and lags in user interface.</p>
-            </div>
+          <div tw="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 mt-16 gap-4 w-8/12 mx-auto">
+            <WAWCard
+              title="Traders"
+              description="Providing best customer service is our primary value and always keeping touch with them."
+              Icon={FiUsers}
+              bgColor="yellow"
+            />
+            <WAWCard
+              title="Reliability"
+              description="Since being a trustworthy merchant in digital flat form, We go above and beyond to meet the demands of our clientele."
+              Icon={FiShield}
+              bgColor="blue"
+            />
+            <WAWCard
+              title="Simplicity"
+              description="With our simple trading platform, anyone can become a trader. Optimo Investment is accessible on all relevant platforms, including the following: Web, Windows, MacOS, iPhone, iPad and Android."
+              Icon={FiSmartphone}
+              bgColor="red"
+            />
+            <WAWCard
+              title="Speed"
+              description="We provide fastest trading using cutting-edge technologies. No delays in order executions and lags in user interface."
+              Icon={FiClock}
+              bgColor="green"
+            />
+
           </div>
         </Container>
       </div>
@@ -168,7 +165,7 @@ export default function App() {
               Inhere we are providing opportunity to join our future investment plan</p>
 
           </div>
-          <div tw="grid grid-cols-2 md:grid-cols-3 mt-8 gap-4 w-10/12 mx-auto">
+          <div tw="grid grid-cols-2 md:grid-cols-3 mt-8 gap-4 w-9/12 mx-auto">
             <FeatureCard
               Icon={FiCheck}
               feature="We're Certified"
